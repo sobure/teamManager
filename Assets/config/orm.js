@@ -4,7 +4,7 @@ I. Dependencies:
 II. 'ORM' Class
 */
 
-const connection = require('../config/connection.js');
+const connection = require('./connection.js');
 
 class ORM 
 {
@@ -20,22 +20,17 @@ printQuestionMarks (numberOfValues){
 }
 
 
+
 selectAll(table) {
     const queryString = 'SELECT * FROM ??';
     return this.connection.query(queryString, [table])
 }
 
-create(table, columns, values)
-{
 
-    const queryString =`'INSERT INTO ??';
-    this.printQuestionMarks(values.length)})`;
-    return this.connection.query(queryString, [table])
-}
 
 create(table, columns, values)
 {
-    const queryString = `SELECT * FROM ?? (${columns.join(',')}) VALUE (${this.
+    const queryString = ` INSERT INTO ?? (${columns.join(',')}) VALUE (${this.
     printQuestionMarks(values.length)})`;
     
     console.log(queryString);
@@ -53,9 +48,9 @@ update(table, objColVals, id)
     }
 delete(tableInput, objColVals, colValue)
 {
-    
-    const queryString =
-        " DELETE FROM ?? WHERE ?? = ? ";
+    const queryString = " DELETE FROM ?? WHERE ?? = ? ";
     return this.connection.query( queryString, [tableInput, objColvals, colValue])
     }
 }
+
+module.exports = new ORM(connection); 
