@@ -16,7 +16,7 @@ router.post("/api/employees:id",(req, res) => {
 })
 
 router.post('/api/', (req, res) => {
-    Employee.create(["fname","lname","tite","salary","departement_id"], [req.body.fname, req.body.lname,req.body.salary,req.body.department_id])
+    Employee.create(["firstName","lastName","role", "salary"], [req.body.firstName, req.body.lastName,req.body.role,req.body.salary])
 })
 
 module.exports  = router

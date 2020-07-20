@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
 port: 3306,
 user: 'root',
 password: "",
-database: "Departments "
+database: "Employees_db"
 });
 
 connection.connect(function(err) {
@@ -14,7 +14,7 @@ connection.connect(function(err) {
         console.error("error connecting:" + err.stack);
         return;
     }
-    console.llog("conneected as id" + connection.threadId);
+    console.log("conneected as id" + connection.threadId);
 });
 
 connection.query = util.promisify(connection.query);
